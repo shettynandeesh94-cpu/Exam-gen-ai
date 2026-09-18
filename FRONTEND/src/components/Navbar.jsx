@@ -43,8 +43,9 @@ const Navbar = ({ onMenuClick }) => {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    const baseURL = import.meta.env.VITE_API_URL || '';
-    const sseUrl = `${baseURL}/api/notifications/stream?token=${token}`;
+    const rawBase = import.meta.env.VITE_API_URL || '';
+    const cleanBase = rawBase.replace(/\/api\/?$/, '');
+    const sseUrl = `${cleanBase}/api/notifications/stream?token=${token}`;
     const eventSource = new EventSource(sseUrl);
 
     eventSource.onmessage = (event) => {
