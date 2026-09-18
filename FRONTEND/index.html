@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExamGen AI</title>
+    <script>
+      (function() {
+        if (localStorage.getItem('theme_migrated_v2') !== 'true') {
+          localStorage.setItem('theme', 'light');
+          localStorage.setItem('theme_migrated_v2', 'true');
+        }
+        const theme = localStorage.getItem('theme') || 'light';
+        if (theme === 'light') {
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.remove('light');
+        }
+      })();
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
